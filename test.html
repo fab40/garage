@@ -1,0 +1,30 @@
+<script>
+if (localStorage) {
+  // Le navigateur supporte le localStorage
+  localStorage.setItem("maCle", "Ma valeur");
+  localStorage.getItem['maCle']
+} else {
+  // localStorage non supporté
+}
+
+
+	function set() {
+		filename = document.forms["editor"].filename.value;
+		data = document.forms["editor"].data.value;
+		localStorage.setItem(filename, data);
+		document.forms["editor"].data.value = "";
+	}
+	function get() {
+		filename = document.forms["editor"].filename.value;
+		document.forms["editor"].data.value = localStorage.getItem(filename);
+	}
+</script>
+<form name="editor">
+	<textarea  name="data" rows=3 cols=50>
+	</textarea><br>
+	<br>
+	Fichier :
+	<input name="filename">
+	<input type="button" value="Sauver" onclick="set()">
+	<input type="button" value="Relire" onclick="get()">
+</form>
